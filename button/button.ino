@@ -6,9 +6,10 @@
 RF24 rf24(7, 8); // CE腳, CSN腳
 
 const byte addr[] = "1Node";
-const char msg[] = "Happy Hacking!";
+char T[] = "1";
+char F[] = "0";
 
-int score = 0;
+int i = 0;
 
 void setup() {
   rf24.begin();
@@ -22,15 +23,16 @@ void setup() {
 }
 
 void loop() {
-  int i = digitalRead(switchPin);
-  Serial.println(i);
-  
-  if(i){
-    rf24.write(&score, sizeof(score));
-    Serial.println(msg);
+  i = digitalRead(switchPin);
 
-    score++;
+  if(i == 1){
+    rf24.write(&T, sizeof(T));
   }
-  
+  else{
+    rf24.write(&F, sizeof(F));
+  }
+
+  Serial.println(i);
+
   delay(100);
 }
