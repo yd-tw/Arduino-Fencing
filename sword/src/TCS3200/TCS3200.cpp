@@ -1,4 +1,4 @@
-#include "TCS_3200.h"
+#include "TCS3200.h"
 
 TCS3200::TCS3200(int s0, int s1, int s2, int s3, int out) {
   _s0 = s0;
